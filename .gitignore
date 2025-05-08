@@ -1,0 +1,93 @@
+# Виртуальное окружение
+.venv/
+*.env
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.py[cod]
+*$py.class
+
+# IDE и редакторы
+.idea/
+.vscode/
+*.iml
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Временные и кэширующие файлы
+*.DS_Store
+Thumbs.db
+
+# pip cache
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Секретные файлы и ключи
+*.key
+*.pem
+secrets.json
+config.yaml
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Testing tools
+.coverage
+.cache/
+.tox/
+nosetests.xml
+pytest_cache/
+
+# Archives and backup files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.bak
+*.old
+
+# Программирование с Cython
+*.c
+*.so
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux
+*.swp
+
+# Локализация
+locales/*/LC_MESSAGES/*.po
+
+# Исключение файлов из forms и images, но сохранение директорий
+bot/data/forms/*
+!bot/data/forms/.gitkeep
+bot/data/images/*
+!bot/data/images/.gitkeep
+
+# Исключение базы данных
+bot/database/*.db
+
+# Исключение пользовательских директорий
+zoo/

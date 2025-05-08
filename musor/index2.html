@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BakePoint - Доставка домашней выпечки</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        beige: {
+                            light: '#F5F0E5',
+                            DEFAULT: '#E8D5C4',
+                            dark: '#D0B49F',
+                        },
+                        brown: {
+                            light: '#C8A992',
+                            DEFAULT: '#9E7676',
+                            dark: '#815B5B',
+                        },
+                        cream: '#FFF8EA',
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FFF8EA;
+        }
+
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e8d5c4' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Навигация -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <svg class="w-8 h-8 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z">
+                    </path>
+                    <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <span class="ml-2 text-2xl font-semibold text-brown-DEFAULT">BakePoint</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="text-brown-DEFAULT hover:text-brown-dark transition">Главная</a>
+                <a href="#catalog" class="text-brown-DEFAULT hover:text-brown-dark transition">Каталог</a>
+                <a href="#bakers" class="text-brown-DEFAULT hover:text-brown-dark transition">Кондитеры</a>
+                <a href="#about" class="text-brown-DEFAULT hover:text-brown-dark transition">О нас</a>
+                <a href="#contact" class="text-brown-DEFAULT hover:text-brown-dark transition">Контакты</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="cartBtn" class="relative p-2">
+                    <svg class="w-6 h-6 text-brown-DEFAULT" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                        </path>
+                    </svg>
+                    <span id="cartCount"
+                        class="absolute -top-1 -right-1 bg-brown-DEFAULT text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </button>
+                <div class="hidden md:block">
+                    <button id="loginBtn"
+                        class="bg-beige-DEFAULT hover:bg-beige-dark text-brown-dark px-4 py-2 rounded-md transition">Войти</button>
+                    <button id="registerBtn"
+                        class="bg-brown-DEFAULT hover:bg-brown-dark text-white px-4 py-2 rounded-md ml-2 transition">Регистрация</button>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden">
+                    <svg class="w-6 h-6 text-brown-DEFAULT" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Мобильное меню -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white px-4 py-2">
+            <a href="#" class="block py-2 text-brown-DEFAULT hover:text-brown-dark">Главная</a>
+            <a href="#catalog" class="block py-2 text-brown-DEFAULT hover:text-brown-dark">Каталог</a>
+            <a href="#bakers" class="block py-2 text-brown-DEFAULT hover:text-brown-dark">Кондитеры</a>
+            <a href="#about" class="block py-2 text-brown-DEFAULT hover:text-brown-dark">О нас</a>
+            <a href="#contact" class="block py-2 text-brown-DEFAULT hover:text-brown-dark">Контакты</a>
+            <div class="mt-4 flex space-x-2">
+                <button
+                    class="bg-beige-DEFAULT hover:bg-beige-dark text-brown-dark px-4 py-2 rounded-md w-1/2">Войти</button>
+                <button
+                    class="bg-brown-DEFAULT hover:bg-brown-dark text-white px-4 py-2 rounded-md w-1/2">Регистрация</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный баннер -->
+    <section class="hero-pattern bg-beige-light py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-brown-dark mb-4">Домашняя выпечка с доставкой</h1>
+                    <p class="text-lg text-brown-DEFAULT mb-6">Платформа, объединяющая талантливых домашних кондитеров и
+                        ценителей вкусной выпечки</p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <button
+                            class="bg-brown-DEFAULT hover:bg-brown-dark text-white px-6 py-3 rounded-md transition">Заказать
+                            выпечку</button>
+                        <button
+                            class="bg-beige-DEFAULT hover:bg-beige-dark text-brown-dark px-6 py-3 rounded-md transition">Стать
+                            кондитером</button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-80 h-80">
+                        <svg class="absolute inset-0" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#E8D5C4"
+                                d="M44.7,-76.4C58.9,-69.2,71.8,-59,79.6,-45.3C87.4,-31.7,90.2,-14.8,88.9,1.3C87.7,17.5,82.4,33,73.2,45.6C64,58.2,50.8,67.8,36.6,74.3C22.4,80.8,7.1,84.2,-8.9,84.5C-24.9,84.8,-49.8,82,-65.1,69.8C-80.4,57.6,-86.2,35.9,-88.9,14.7C-91.6,-6.5,-91.2,-27.2,-82.6,-43.5C-74,-59.8,-57.2,-71.7,-40.5,-77.7C-23.8,-83.7,-7.1,-83.8,8.5,-79.1C24.1,-74.4,30.5,-83.6,44.7,-76.4Z"
+                                transform="translate(100 100)" />
+                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="24"
+                                fill="#9E7676" font-weight="bold">BakePoint</text>
+                            <text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle" font-size="12"
+                                fill="#815B5B">Вкусно как дома</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как это работает -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-brown-dark mb-12">Как это работает</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-beige-light p-6 rounded-lg text-center">
+                    <div class="bg-beige-DEFAULT w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-brown-dark mb-2">Выберите кондитера</h3>
+                    <p class="text-brown-DEFAULT">Просмотрите профили талантливых домашних кондитеров и выберите того,
+                        чьи десерты вам нравятся больше всего</p>
+                </div>
+                <div class="bg-beige-light p-6 rounded-lg text-center">
+                    <div class="bg-beige-DEFAULT w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-brown-dark mb-2">Сделайте заказ</h3>
+                    <p class="text-brown-DEFAULT">Выберите понравившиеся десерты из каталога или закажите индивидуальный
+                        десерт по вашему вкусу</p>
+                </div>
+                <div class="bg-beige-light p-6 rounded-lg text-center">
+                    <div class="bg-beige-DEFAULT w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z">
+                            </path>
+                            <path
+                                d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-brown-dark mb-2">Получите доставку</h3>
+                    <p class="text-brown-DEFAULT">Свежая домашняя выпечка будет доставлена к вам в удобное время и место
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Популярные категории -->
+    <section id="catalog" class="py-16 bg-beige-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-brown-dark mb-4">Каталог выпечки</h2>
+            <p class="text-center text-brown-DEFAULT mb-12">Выберите из широкого ассортимента домашних десертов</p>
+
+            <div class="flex overflow-x-auto scrollbar-hide pb-6 space-x-4">
+                <button class="category-btn bg-brown-DEFAULT text-white px-6 py-2 rounded-full whitespace-nowrap">Все
+                    категории</button>
+                <button
+                    class="category-btn bg-white text-brown-DEFAULT px-6 py-2 rounded-full whitespace-nowrap">Торты</button>
+                <button
+                    class="category-btn bg-white text-brown-DEFAULT px-6 py-2 rounded-full whitespace-nowrap">Пирожные</button>
+                <button
+                    class="category-btn bg-white text-brown-DEFAULT px-6 py-2 rounded-full whitespace-nowrap">Печенье</button>
+                <button
+                    class="category-btn bg-white text-brown-DEFAULT px-6 py-2 rounded-full whitespace-nowrap">Хлеб</button>
+                <button
+                    class="category-btn bg-white text-brown-DEFAULT px-6 py-2 rounded-full whitespace-nowrap">Капкейки</button>
+                <button
+                    class="category-btn bg-white text-brown-DEFAULT px-6 py-2 rounded-full whitespace-nowrap">Пироги</button>
+                <button class="category-btn bg-white text-brown-DEFAULT px-6 py-2 rounded-full whitespace-nowrap">Без
+                    глютена</button>
+                <button
+                    class="category-btn bg-white text-brown-DEFAULT px-6 py-2 rounded-full whitespace-nowrap">Веганские</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+                <!-- Карточка товара 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
+                    <div class="h-48 bg-beige-DEFAULT flex items-center justify-center">
+                        <svg class="w-24 h-24 text-brown-light" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1zm-5 8.274l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L5 10.274zm10 0l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L15 10.274z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold text-brown-dark">Шоколадный торт</h3>
+                            <span class="bg-beige-DEFAULT text-brown-dark text-sm px-2 py-1 rounded">4.9 ★</span>
+                        </div>
+                        <p class="text-brown-DEFAULT text-sm mb-4">Нежный шоколадный бисквит с кремом из маскарпоне</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-brown-dark font-bold">1200 ₽</span>
+                            <button
+                                class="add-to-cart bg-brown-DEFAULT hover:bg-brown-dark text-white px-3 py-1 rounded transition"
+                                data-id="1" data-name="Шоколадный торт" data-price="1200">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка товара 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
+                    <div class="h-48 bg-beige-DEFAULT flex items-center justify-center">
+                        <svg class="w-24 h-24 text-brown-light" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold text-brown-dark">Ванильные капкейки</h3>
+                            <span class="bg-beige-DEFAULT text-brown-dark text-sm px-2 py-1 rounded">4.8 ★</span>
+                        </div>
+                        <p class="text-brown-DEFAULT text-sm mb-4">Воздушные капкейки с ванильным кремом и ягодами</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-brown-dark font-bold">800 ₽</span>
+                            <button
+                                class="add-to-cart bg-brown-DEFAULT hover:bg-brown-dark text-white px-3 py-1 rounded transition"
+                                data-id="2" data-name="Ванильные капкейки" data-price="800">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка товара 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
+                    <div class="h-48 bg-beige-DEFAULT flex items-center justify-center">
+                        <svg class="w-24 h-24 text-brown-light" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                            <path fill-rule="evenodd"
+                                d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold text-brown-dark">Домашний хлеб</h3>
+                            <span class="bg-beige-DEFAULT text-brown-dark text-sm px-2 py-1 rounded">4.7 ★</span>
+                        </div>
+                        <p class="text-brown-DEFAULT text-sm mb-4">Ароматный хлеб на закваске с хрустящей корочкой</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-brown-dark font-bold">350 ₽</span>
+                            <button
+                                class="add-to-cart bg-brown-DEFAULT hover:bg-brown-dark text-white px-3 py-1 rounded transition"
+                                data-id="3" data-name="Домашний хлеб" data-price="350">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка товара 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
+                    <div class="h-48 bg-beige-DEFAULT flex items-center justify-center">
+                        <svg class="w-24 h-24 text-brown-light" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                            <path fill-rule="evenodd"
+                                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold text-brown-dark">Медовое печенье</h3>
+                            <span class="bg-beige-DEFAULT text-brown-dark text-sm px-2 py-1 rounded">4.9 ★</span>
+                        </div>
+                        <p class="text-brown-DEFAULT text-sm mb-4">Мягкое печенье с медом и корицей, 10 штук</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-brown-dark font-bold">450 ₽</span>
+                            <button
+                                class="add-to-cart bg-brown-DEFAULT hover:bg-brown-dark text-white px-3 py-1 rounded transition"
+                                data-id="4" data-name="Медовое печенье" data-price="450">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <button class="bg-brown-DEFAULT hover:bg-brown-dark text-white px-6 py-3 rounded-md transition">Показать
+                    больше</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Наши кондитеры -->
+    <section id="bakers" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-brown-dark mb-4">Наши кондитеры</h2>
+            <p class="text-center text-brown-DEFAULT mb-12">Талантливые мастера домашней выпечки</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Кондитер 1 -->
+                <div class="bg-beige-light rounded-lg overflow-hidden shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-beige-DEFAULT rounded-full flex items-center justify-center mr-4">
+                            <svg class="w-10 h-10 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-brown-dark">Анна Петрова</h3>
+                            <div class="flex items-center">
+                                <span class="text-yellow-500">★★★★★</span>
+                                <span class="text-brown-DEFAULT text-sm ml-1">(32 отзыва)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-brown-DEFAULT mb-4">Специализируется на авторских тортах и пирожных. Более 5 лет
+                        опыта в кондитерском искусстве.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-beige-DEFAULT text-brown-dark text-xs px-2 py-1 rounded">Торты</span>
+                        <span class="bg-beige-DEFAULT text-brown-dark text-xs px-2 py-1 rounded">Пирожные</span>
+                        <span class="bg-beige-DEFAULT text-brown-dark text-xs px-2 py-1 rounded">Капкейки</span>
+                    </div>
+                    <button
+                        class="w-full bg-brown-DEFAULT hover:bg-brown-dark text-white py-2 rounded transition">Посмотреть
+                        профиль</button>
+                </div>
+
+                <!-- Кондитер 2 -->
+                <div class="bg-beige-light rounded-lg overflow-hidden shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-beige-DEFAULT rounded-full flex items-center justify-center mr-4">
+                            <svg class="w-10 h-10 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-brown-dark">Михаил Соколов</h3>
+                            <div class="flex items-center">
+                                <span class="text-yellow-500">★★★★☆</span>
+                                <span class="text-brown-DEFAULT text-sm ml-1">(18 отзывов)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-brown-DEFAULT mb-4">Пекарь-самоучка, специализирующийся на хлебе и выпечке на
+                        закваске. Проводит мастер-классы.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-beige-DEFAULT text-brown-dark text-xs px-2 py-1 rounded">Хлеб</span>
+                        <span class="bg-beige-DEFAULT text-brown-dark text-xs px-2 py-1 rounded">Булочки</span>
+                        <span class="bg-beige-DEFAULT text-brown-dark text-xs px-2 py-1 rounded">Закваска</span>
+                    </div>
+                    <button
+                        class="w-full bg-brown-DEFAULT hover:bg-brown-dark text-white py-2 rounded transition">Посмотреть
+                        профиль</button>
+                </div>
+
+                <!-- Кондитер 3 -->
+                <div class="bg-beige-light rounded-lg overflow-hidden shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-beige-DEFAULT rounded-full flex items-center justify-center mr-4">
+                            <svg class="w-10 h-10 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-brown-dark">Елена Иванова</h3>
+                            <div class="flex items-center">
+                                <span class="text-yellow-500">★★★★★</span>
+                                <span class="text-brown-DEFAULT text-sm ml-1">(27 отзывов)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-brown-DEFAULT mb-4">Кондитер с образованием, специализируется на веганских и
+                        безглютеновых десертах.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-beige-DEFAULT text-brown-dark text-xs px-2 py-1 rounded">Веганское</span>
+                        <span class="bg-beige-DEFAULT text-brown-dark text-xs px-2 py-1 rounded">Без глютена</span>
+                        <span class="bg-beige-DEFAULT text-brown-dark text-xs px-2 py-1 rounded">ПП десерты</span>
+                    </div>
+                    <button
+                        class="w-full bg-brown-DEFAULT hover:bg-brown-dark text-white py-2 rounded transition">Посмотреть
+                        профиль</button>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <button
+                    class="bg-beige-DEFAULT hover:bg-beige-dark text-brown-dark px-6 py-3 rounded-md transition">Стать
+                    кондитером</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CRM система и панели управления -->
+    <section class="py-16 bg-beige-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-brown-dark mb-4">Управление бизнесом</h2>
+            <p class="text-center text-brown-DEFAULT mb-12">Удобные инструменты для кондитеров и клиентов</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Панель кондитера -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-brown-dark mb-4">Панель кондитера</h3>
+                    <div class="bg-beige-light rounded-lg p-4 mb-4">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="font-medium text-brown-dark">Статистика заказов</h4>
+                            <div class="text-sm text-brown-DEFAULT">За последние 30 дней</div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 mb-4">
+                            <div class="bg-white p-3 rounded-md text-center">
+                                <div class="text-2xl font-bold text-brown-DEFAULT">28</div>
+                                <div class="text-xs text-brown-DEFAULT">Выполнено</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-md text-center">
+                                <div class="text-2xl font-bold text-brown-DEFAULT">5</div>
+                                <div class="text-xs text-brown-DEFAULT">В процессе</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-md text-center">
+                                <div class="text-2xl font-bold text-brown-DEFAULT">2</div>
+                                <div class="text-xs text-brown-DEFAULT">Новых</div>
+                            </div>
+                        </div>
+                        <div class="h-32 flex items-end space-x-1">
+                            <div class="w-1/12 bg-brown-light rounded-t" style="height: 40%"></div>
+                            <div class="w-1/12 bg-brown-light rounded-t" style="height: 60%"></div>
+                            <div class="w-1/12 bg-brown-light rounded-t" style="height: 45%"></div>
+                            <div class="w-1/12 bg-brown-light rounded-t" style="height: 70%"></div>
+                            <div class="w-1/12 bg-brown-light rounded-t" style="height: 50%"></div>
+                            <div class="w-1/12 bg-brown-light rounded-t" style="height: 65%"></div>
+                            <div class="w-1/12 bg-brown-light rounded-t" style="height: 55%"></div>
+                            <div class="w-1/12 bg-brown-DEFAULT rounded-t" style="height: 80%"></div>
+                            <div class="w-1/12 bg-brown-DEFAULT rounded-t" style="height: 90%"></div>
+                            <div class="w-1/12 bg-brown-DEFAULT rounded-t" style="height: 75%"></div>
+                            <div class="w-1/12 bg-brown-light rounded-t" style="height: 60%"></div>
+                            <div class="w-1/12 bg-brown-light rounded-t" style="height: 50%"></div>
+                        </div>
+                        <div class="flex justify-between text-xs text-brown-DEFAULT mt-1">
+                            <span>1</span>
+                            <span>5</span>
+                            <span>10</span>
+                            <span>15</span>
+                            <span>20</span>
+                            <span>25</span>
+                            <span>30</span>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-medium text-brown-dark mb-2">Последние заказы</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center p-3 bg-beige-light rounded-md">
+                                <div>
+                                    <div class="font-medium text-brown-dark">Заказ #1089</div>
+                                    <div class="text-xs text-brown-DEFAULT">Шоколадный торт, 1 шт</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm font-medium text-brown-DEFAULT">1200 ₽</div>
+                                    <div class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Выполнен</div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-beige-light rounded-md">
+                                <div>
+                                    <div class="font-medium text-brown-dark">Заказ #1088</div>
+                                    <div class="text-xs text-brown-DEFAULT">Ванильные капкейки, 6 шт</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm font-medium text-brown-DEFAULT">800 ₽</div>
+                                    <div class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">В процессе
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-beige-light rounded-md">
+                                <div>
+                                    <div class="font-medium text-brown-dark">Заказ #1087</div>
+                                    <div class="text-xs text-brown-DEFAULT">Медовое печенье, 2 набора</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm font-medium text-brown-DEFAULT">900 ₽</div>
+                                    <div class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Новый</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full bg-brown-DEFAULT hover:bg-brown-dark text-white py-2 rounded transition">Войти
+                        в панель кондитера</button>
+                </div>
+
+                <!-- Панель клиента -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-brown-dark mb-4">Личный кабинет клиента</h3>
+                    <div class="bg-beige-light rounded-lg p-4 mb-4">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-beige-DEFAULT rounded-full flex items-center justify-center mr-3">
+                                <svg class="w-6 h-6 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-medium text-brown-dark">Екатерина Смирнова</div>
+                                <div class="text-xs text-brown-DEFAULT">Клиент с 15.03.2023</div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div class="bg-white p-3 rounded-md text-center">
+                                <div class="text-2xl font-bold text-brown-DEFAULT">12</div>
+                                <div class="text-xs text-brown-DEFAULT">Заказов</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-md text-center">
+                                <div class="text-2xl font-bold text-brown-DEFAULT">5%</div>
+                                <div class="text-xs text-brown-DEFAULT">Скидка</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-medium text-brown-dark mb-2">Мои заказы</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center p-3 bg-beige-light rounded-md">
+                                <div>
+                                    <div class="font-medium text-brown-dark">Заказ #1075</div>
+                                    <div class="text-xs text-brown-DEFAULT">23.05.2023</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm font-medium text-brown-DEFAULT">2300 ₽</div>
+                                    <div class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Доставлен</div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-beige-light rounded-md">
+                                <div>
+                                    <div class="font-medium text-brown-dark">Заказ #1062</div>
+                                    <div class="text-xs text-brown-DEFAULT">15.05.2023</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm font-medium text-brown-DEFAULT">1450 ₽</div>
+                                    <div class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Доставлен</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-medium text-brown-dark mb-2">Избранные кондитеры</h4>
+                        <div class="flex space-x-2">
+                            <div class="w-10 h-10 bg-beige-DEFAULT rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="w-10 h-10 bg-beige-DEFAULT rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="w-10 h-10 bg-beige-DEFAULT rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full bg-beige-DEFAULT hover:bg-beige-dark text-brown-dark py-2 rounded transition">Войти
+                        в личный кабинет</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Админ панель -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-brown-dark mb-4">Администрирование платформы</h2>
+            <p class="text-center text-brown-DEFAULT mb-12">Полный контроль над всеми процессами</p>
+
+            <div class="bg-beige-light rounded-lg shadow-md p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-white p-4 rounded-md">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-medium text-brown-dark">Пользователи</h4>
+                            <svg class="w-5 h-5 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="text-2xl font-bold text-brown-DEFAULT">1,254</div>
+                        <div class="text-xs text-green-600 flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            +12% за месяц
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-md">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-medium text-brown-dark">Кондитеры</h4>
+                            <svg class="w-5 h-5 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="text-2xl font-bold text-brown-DEFAULT">87</div>
+                        <div class="text-xs text-green-600 flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            +5% за месяц
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-md">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-medium text-brown-dark">Заказы</h4>
+                            <svg class="w-5 h-5 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="text-2xl font-bold text-brown-DEFAULT">3,782</div>
+                        <div class="text-xs text-green-600 flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            +18% за месяц
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-md mb-6">
+                    <h4 class="font-medium text-brown-dark mb-4">Активность на платформе</h4>
+                    <div class="h-48 flex items-end space-x-2">
+                        <div class="w-1/12 bg-brown-light rounded-t" style="height: 30%"></div>
+                        <div class="w-1/12 bg-brown-light rounded-t" style="height: 40%"></div>
+                        <div class="w-1/12 bg-brown-light rounded-t" style="height: 35%"></div>
+                        <div class="w-1/12 bg-brown-light rounded-t" style="height: 50%"></div>
+                        <div class="w-1/12 bg-brown-light rounded-t" style="height: 45%"></div>
+                        <div class="w-1/12 bg-brown-light rounded-t" style="height: 60%"></div>
+                        <div class="w-1/12 bg-brown-light rounded-t" style="height: 55%"></div>
+                        <div class="w-1/12 bg-brown-DEFAULT rounded-t" style="height: 70%"></div>
+                        <div class="w-1/12 bg-brown-DEFAULT rounded-t" style="height: 85%"></div>
+                        <div class="w-1/12 bg-brown-DEFAULT rounded-t" style="height: 90%"></div>
+                        <div class="w-1/12 bg-brown-DEFAULT rounded-t" style="height: 80%"></div>
+                        <div class="w-1/12 bg-brown-DEFAULT rounded-t" style="height: 95%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-brown-DEFAULT mt-2">
+                        <span>Янв</span>
+                        <span>Фев</span>
+                        <span>Мар</span>
+                        <span>Апр</span>
+                        <span>Май</span>
+                        <span>Июн</span>
+                        <span>Июл</span>
+                        <span>Авг</span>
+                        <span>Сен</span>
+                        <span>Окт</span>
+                        <span>Ноя</span>
+                        <span>Дек</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-4 rounded-md">
+                        <h4 class="font-medium text-brown-dark mb-3">Последние регистрации</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center p-2 bg-beige-light rounded-md">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-8 h-8 bg-beige-DEFAULT rounded-full flex items-center justify-center mr-2">
+                                        <svg class="w-4 h-4 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-medium text-brown-dark">Алексей Новиков</div>
+                                        <div class="text-xs text-brown-DEFAULT">Клиент</div>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-brown-DEFAULT">2 часа назад</div>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-beige-light rounded-md">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-8 h-8 bg-beige-DEFAULT rounded-full flex items-center justify-center mr-2">
+                                        <svg class="w-4 h-4 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-medium text-brown-dark">Ольга Сидорова</div>
+                                        <div class="text-xs text-brown-DEFAULT">Кондитер</div>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-brown-DEFAULT">5 часов назад</div>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-beige-light rounded-md">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-8 h-8 bg-beige-DEFAULT rounded-full flex items-center justify-center mr-2">
+                                        <svg class="w-4 h-4 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-medium text-brown-dark">Иван Петров</div>
+                                        <div class="text-xs text-brown-DEFAULT">Клиент</div>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-brown-DEFAULT">8 часов назад</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-md">
+                        <h4 class="font-medium text-brown-dark mb-3">Популярные товары</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center p-2 bg-beige-light rounded-md">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-8 h-8 bg-beige-DEFAULT rounded-full flex items-center justify-center mr-2">
+                                        <svg class="w-4 h-4 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                            <path fill-rule="evenodd"
+                                                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-medium text-brown-dark">Шоколадный торт</div>
+                                        <div class="text-xs text-brown-DEFAULT">Анна Петрова</div>
+                                    </div>
+                                </div>
+                                <div class="text-sm font-medium text-brown-DEFAULT">142 заказа</div>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-beige-light rounded-md">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-8 h-8 bg-beige-DEFAULT rounded-full flex items-center justify-center mr-2">
+                                        <svg class="w-4 h-4 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                            <path fill-rule="evenodd"
+                                                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-medium text-brown-dark">Домашний хлеб</div>
+                                        <div class="text-xs text-brown-DEFAULT">Михаил Соколов</div>
+                                    </div>
+                                </div>
+                                <div class="text-sm font-medium text-brown-DEFAULT">98 заказов</div>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-beige-light rounded-md">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-8 h-8 bg-beige-DEFAULT rounded-full flex items-center justify-center mr-2">
+                                        <svg class="w-4 h-4 text-brown-DEFAULT" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                            <path fill-rule="evenodd"
+                                                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-medium text-brown-dark">Веганский чизкейк</div>
+                                        <div class="text-xs text-brown-DEFAULT">Елена Иванова</div>
+                                    </div>
+                                </div>
+                                <div class="text-sm font-medium text-brown-DEFAULT">76 заказов</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-6">
+                    <button
+                        class="bg-brown-DEFAULT hover:bg-brown-dark text-white px-6 py-3 rounded-md transition">Войти в
+                        панель администратора</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="py-16 bg-beige-light">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-lg shadow-md p-8 max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-brown-dark mb-6">Остались вопросы?</h2>
+                <p class="text-center text-brown-DEFAULT mb-8">Свяжитесь с нами, и мы ответим на все ваши вопросы</p>
+
+                <form id="contactForm" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="name" class="block text-brown-DEFAULT mb-1">Имя</label>
+                            <input type="text" id="name"
+                                class="w-full px-4 py-2 border border-beige-DEFAULT rounded-md focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-brown-DEFAULT mb-1">Email</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-2 border border-beige-DEFAULT rounded-md focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="subject" class="block text-brown-DEFAULT mb-1">Тема</label>
+                        <select id="subject"
+                            class="w-full px-4 py-2 border border-beige-DEFAULT rounded-md focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT">
+                            <option value="">Выберите тему</option>
+                            <option value="order">Вопрос по заказу</option>
+                            <option value="baker">Стать кондитером</option>
+                            <option value="partnership">Сотрудничество</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-brown-DEFAULT mb-1">Сообщение</label>
+                        <textarea id="message" rows="4"
+                            class="w-full px-4 py-2 border border-beige-DEFAULT rounded-md focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit"
+                            class="bg-brown-DEFAULT hover:bg-brown-dark text-white px-8 py-3 rounded-md transition">Отправить
+                            сообщение</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-brown-dark text-beige-light py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols">
+                <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'93891d4c30e52e0d',t:'MTc0NjAzNzg2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
