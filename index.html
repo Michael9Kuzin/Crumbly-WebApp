@@ -1,185 +1,160 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Кондитерская</title>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
-            rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles/main.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/main.css" />
     <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
 </head>
 
 <body>
-<div class="container">
-    <header class="top-bar">
-        <div class="input-group">
-            <img src="images/house_logo.svg" width="20" height="20" alt="Дом"/>
-            <input
-                    type="text"
-                    placeholder="Адрес..."
-                    aria-label="Введите адрес доставки"
-            />
-        </div>
-        <div class="input-group">
-            <img
-                    src="images/search_logo.svg"
-                    width="20"
-                    height="20"
-                    alt="Поиск"
-            />
-            <input
-                    type="text"
-                    placeholder="Поиск..."
-                    aria-label="Поиск товаров"
-            />
-        </div>
-        <button
-                class="burger-btn"
-                aria-label="Меню"
-                onclick="document.getElementById('overlayMenu').classList.add('open')"
-        >
-            <img src="images/burger_logo.svg" width="28" height="28" alt="Меню"/>
-        </button>
-    </header>
+    <div class="container">
+        <header class="top-bar">
+            <div class="input-group">
+                <img src="images/house_logo.svg" width="20" height="20" alt="Дом" />
+                <input type="text" placeholder="Адрес..." aria-label="Введите адрес доставки" />
+            </div>
+            <div class="input-group">
+                <img src="images/search_logo.svg" width="20" height="20" alt="Поиск" />
+                <input type="text" placeholder="Поиск..." aria-label="Поиск товаров" />
+            </div>
+            <button class="burger-btn" aria-label="Меню"
+                onclick="document.getElementById('overlayMenu').classList.add('open')">
+                <img src="images/burger_logo.svg" width="28" height="28" alt="Меню" />
+            </button>
+        </header>
 
-    <nav class="overlay-menu" id="overlayMenu">
-        <button
-                class="close-btn"
-                onclick="document.getElementById('overlayMenu').classList.remove('open')"
-        >
-            ×
-        </button>
-        <ul>
-            <li>
-                <img src="icons/support_logo.svg" alt=""/>
-                <a href="#">Поддержка</a>
-            </li>
-            <li onclick="toggleLanguage()">
-                <img src="icons/languages_logo.svg" alt=""/>
-                <a href="#">Языки</a>
-            </li>
-            <li>
-                <img src="icons/privacy_policy_logo.svg" alt=""/>
-                <a href="#">Политика Конфиденциальности</a>
-            </li>
-            <li>
-                <img src="icons/terms_of_use_logo.svg" alt=""/>
-                <a href="#">Пользовательское cоглашение</a>
-            </li>
-            <li onclick="toggleTheme()">
-                <img src="icons/light_dark_mode_logo.svg" alt=""/>
-                <a href="#">Темный — Светлый режим</a>
-            </li>
-            <li>
-                <img src="icons/profile_logo.svg" alt=""/>
-                <a href="#">Личный кабинет</a>
-            </li>
-        </ul>
+        <nav class="overlay-menu" id="overlayMenu">
+            <button class="close-btn" onclick="document.getElementById('overlayMenu').classList.remove('open')">
+                ×
+            </button>
+            <ul>
+                <li>
+                    <img src="icons/support_logo.svg" alt="" />
+                    <a href="#">Поддержка</a>
+                </li>
+                <li onclick="toggleLanguage()">
+                    <img src="icons/languages_logo.svg" alt="" />
+                    <a href="#">Языки</a>
+                </li>
+                <li>
+                    <img src="icons/privacy_policy_logo.svg" alt="" />
+                    <a href="#">Политика Конфиденциальности</a>
+                </li>
+                <li>
+                    <img src="icons/terms_of_use_logo.svg" alt="" />
+                    <a href="#">Пользовательское cоглашение</a>
+                </li>
+                <li onclick="toggleTheme()">
+                    <img src="icons/light_dark_mode_logo.svg" alt="" />
+                    <a href="#">Темный — Светлый режим</a>
+                </li>
+                <li>
+                    <img src="icons/profile_logo.svg" alt="" />
+                    <a href="#">Личный кабинет</a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="section">
+            <h2 class="section-title">Категории:</h2>
+            <div class="categories">
+                <div class="category">
+                    <img src="images/discount.png" alt="Акции" /><span>Акции</span>
+                </div>
+                <div class="category">
+                    <img src="images/new.png" alt="NEW" /><span>NEW</span>
+                </div>
+                <div class="category">
+                    <img src="images/cakes.png" alt="Торты" /><span>Торты</span>
+                </div>
+                <div class="category">
+                    <img src="images/cupcake.png" alt="Кексы" /><span>Кексы</span>
+                </div>
+                <div class="category">
+                    <img src="images/pie.png" alt="Пироги" /><span>Пироги</span>
+                </div>
+                <div class="category">
+                    <img src="images/macarons.png" alt="Пирожные" /><span>Пирожные</span>
+                </div>
+                <div class="category">
+                    <img src="images/bakery.png" alt="Выпечка" /><span>Выпечка</span>
+                </div>
+                <div class="category">
+                    <img src="images/jam.png" alt="Закрутки" /><span>Закрутки</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Магазины кондитеров:</h2>
+
+            <div class="store-card">
+                <div class="photo">ФОТО</div>
+                <div class="info">
+                    <span class="name">Кондитер №1</span>
+                    <span class="rating">⭐ 4.95</span>
+                    <span class="delivery-time">20–30 мин</span>
+                </div>
+            </div>
+
+            <div class="store-card">
+                <div class="photo">ФОТО</div>
+                <div class="info">
+                    <span class="name">Кондитер №2</span>
+                    <span class="rating">⭐ 4.84</span>
+                    <span class="delivery-time">15–20 мин</span>
+                </div>
+            </div>
+
+            <div class="store-card">
+                <div class="photo">ФОТО</div>
+                <div class="info">
+                    <span class="name">Кондитер №3</span>
+                    <span class="rating">⭐ 4.84</span>
+                    <span class="delivery-time">50–60 мин</span>
+                </div>
+            </div>
+
+            <div class="store-card">
+                <div class="photo">ФОТО</div>
+                <div class="info">
+                    <span class="name">Кондитер №4</span>
+                    <span class="rating">⭐ 4.79</span>
+                    <span class="delivery-time">20–35 мин</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <nav class="bottom-nav">
+        <div class="tab">
+            <img src="images/main_logo.svg" alt="Главная" />
+            <small>Главная</small>
+        </div>
+        <div class="tab">
+            <img src="images/basket_logo.svg" alt="Корзина" />
+            <small>Корзина</small>
+        </div>
+        <div class="tab">
+            <img src="images/order_logo.svg" alt="Заказы" />
+            <small>Заказы</small>
+        </div>
     </nav>
 
-    <section class="section">
-        <h2 class="section-title">Категории:</h2>
-        <div class="categories">
-            <div class="category">
-                <img src="images/discount.png" alt="Акции"/><span>Акции</span>
-            </div>
-            <div class="category">
-                <img src="images/new.png" alt="NEW"/><span>NEW</span>
-            </div>
-            <div class="category">
-                <img src="images/cakes.png" alt="Торты"/><span>Торты</span>
-            </div>
-            <div class="category">
-                <img src="images/cupcake.png" alt="Кексы"/><span>Кексы</span>
-            </div>
-            <div class="category">
-                <img src="images/pie.png" alt="Пироги"/><span>Пироги</span>
-            </div>
-            <div class="category">
-                <img src="images/macarons.png" alt="Пирожные"/><span
-            >Пирожные</span
-            >
-            </div>
-            <div class="category">
-                <img src="images/bakery.png" alt="Выпечка"/><span>Выпечка</span>
-            </div>
-            <div class="category">
-                <img src="images/jam.png" alt="Закрутки"/><span>Закрутки</span>
-            </div>
-        </div>
-    </section>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+        }
 
-    <section class="section">
-        <h2 class="section-title">Магазины кондитеров:</h2>
-
-        <div class="store-card">
-            <div class="photo">ФОТО</div>
-            <div class="info">
-                <span class="name">Кондитер №1</span>
-                <span class="rating">⭐ 4.95</span>
-                <span class="delivery-time">20–30 мин</span>
-            </div>
-        </div>
-
-        <div class="store-card">
-            <div class="photo">ФОТО</div>
-            <div class="info">
-                <span class="name">Кондитер №2</span>
-                <span class="rating">⭐ 4.84</span>
-                <span class="delivery-time">15–20 мин</span>
-            </div>
-        </div>
-
-        <div class="store-card">
-            <div class="photo">ФОТО</div>
-            <div class="info">
-                <span class="name">Кондитер №3</span>
-                <span class="rating">⭐ 4.84</span>
-                <span class="delivery-time">50–60 мин</span>
-            </div>
-        </div>
-
-        <div class="store-card">
-            <div class="photo">ФОТО</div>
-            <div class="info">
-                <span class="name">Кондитер №4</span>
-                <span class="rating">⭐ 4.79</span>
-                <span class="delivery-time">20–35 мин</span>
-            </div>
-        </div>
-    </section>
-</div>
-
-<nav class="bottom-nav">
-    <div class="tab">
-        <img src="images/main_logo.svg" alt="Главная"/>
-        <small>Главная</small>
-    </div>
-    <div class="tab">
-        <img src="images/basket_logo.svg" alt="Корзина"/>
-        <small>Корзина</small>
-    </div>
-    <div class="tab">
-        <img src="images/order_logo.svg" alt="Заказы"/>
-        <small>Заказы</small>
-    </div>
-</nav>
-
-<script>
-    function toggleTheme() {
-      document.body.classList.toggle("dark-mode");
-    }
-
-    function toggleLanguage() {
-      // Заглушка: переключение языка не реализовано
-      alert("Переключение языка пока не работает.");
-    }
-</script>
+        function toggleLanguage() {
+            // Заглушка: переключение языка не реализовано
+            alert("Переключение языка пока не работает.");
+        }
+    </script>
 </body>
+
 </html>

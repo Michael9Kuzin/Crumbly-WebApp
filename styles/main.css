@@ -2,7 +2,7 @@
   --font-family: "Lobster", cursive;
   --bg-color: #ffeecc;
   --text-color: #c69c6d;
-  --text_color-def: #ffffff;
+  --text-color-def: #ffffff;
   --card-bg: #c69c6d;
   --badge-bg: #c69c6d;
   --badge-text: #ffffff;
@@ -31,7 +31,7 @@
 body {
   font-family: var(--font-family);
   background: var(--bg-color);
-  color: var(--text_color-def);
+  color: var(--text-color-def);
   transition: background 0.3s, color 0.3s;
 }
 
@@ -64,14 +64,14 @@ body {
 .input-group input {
   border: none;
   background: transparent;
-  color: var(--text_color-def);
+  color: var(--text-color-def);
   margin-left: 8px;
   width: 100%;
   outline: none;
 }
 
 .input-group input::placeholder {
-  color: var(--text_color-def);
+  color: var(--text-color-def);
   font-family: var(--font-family);
 }
 
@@ -129,12 +129,12 @@ body {
   display: block;
   font-size: 12px;
   margin-top: 6px;
-  color: var(--text_color-def);
+  color: var(--text-color-def);
 }
 
 .store-card {
   background: var(--card-bg);
-  color: var(--text_color-def);
+  color: var(--text-color-def);
   border-radius: 20px;
   padding: 8px;
   margin-bottom: 30px;
@@ -142,7 +142,7 @@ body {
 
 /* .badge {
     background: var(--card-bg);
-    color: var(--text_color_def);
+    color: var(--text-color-def);
     border-radius: 12px;
     padding: 4px 8px;
     display: inline-block;
@@ -151,8 +151,8 @@ body {
 
 .photo {
   display: flex;
-  margin: 0;
-  height: 100px;
+  margin-bottom: 3px;
+  height: 130px;
   border-radius: 12px;
   background: #5a3c3c;
   align-items: center;
@@ -168,7 +168,7 @@ body {
 
 .info .name {
   color: var(--text-color-def);
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .rating,
@@ -204,12 +204,11 @@ body {
 
 .tab {
   text-align: center;
-  color: var(--text_color-def);
+  color: var(--text-color-def);
 }
 
 .tab small {
   display: block;
-  font-style: italic;
   font-size: 11px;
 }
 
@@ -223,38 +222,43 @@ body {
   top: 0;
   right: -100%;
   width: 80%;
-  height: 100%;
+  height: 80%;
+  border-radius: 34px 0px 0px 34px;
   background: var(--card-bg);
-  color: var(--text_color-def);
+  color: var(--text-color-def);
   padding: 20px;
   transition: right 0.3s ease;
   z-index: 20;
   display: flex;
   flex-direction: column;
 }
+
 .overlay-menu.open {
   right: 0;
 }
+
 .overlay-menu .close-btn {
   align-self: flex-end;
   font-size: 24px;
   background: none;
   border: none;
-  color: var(--text_color-def);
+  color: var(--text-color-def);
   cursor: pointer;
 }
+
 .overlay-menu ul {
   list-style: none;
   padding: 0;
   margin-top: 10px;
 }
+
 .overlay-menu li {
   display: flex;
   align-content: center;
   justify-content: start;
   gap: 10px;
   font-size: 20px;
-  border-top: 1px solid white;
+  border-top: 2px solid white;
   padding: 10px 0;
 }
 
@@ -263,6 +267,7 @@ body {
 }
 
 .overlay-menu li a {
+  padding-top: 5px;
   color: var(--badge-text);
   text-decoration: none;
 }
