@@ -14,16 +14,16 @@
     <div class="container">
         <header class="top-bar">
             <div class="input-group">
-                <img src="images/house_logo.svg" width="20" height="20" alt="Дом" />
+                <img src="icons/house_logo.svg" width="20" height="20" alt="Дом" />
                 <input type="text" placeholder="Адрес..." aria-label="Введите адрес доставки" />
             </div>
             <div class="input-group">
-                <img src="images/search_logo.svg" width="20" height="20" alt="Поиск" />
+                <img src="icons/search_logo.svg" width="20" height="20" alt="Поиск" />
                 <input type="text" placeholder="Поиск..." aria-label="Поиск товаров" />
             </div>
             <button class="burger-btn" aria-label="Меню"
                 onclick="document.getElementById('overlayMenu').classList.add('open')">
-                <img src="images/burger_logo.svg" width="28" height="28" alt="Меню" />
+                <img src="icons/burger_logo.svg" width="28" height="28" alt="Меню" />
             </button>
         </header>
 
@@ -63,28 +63,28 @@
             <h2 class="section-title">Категории:</h2>
             <div class="categories">
                 <div class="category">
-                    <img src="images/discount.png" alt="Акции" /><span>Акции</span>
+                    <img src="icons/discount.png" alt="Акции" /><span>Акции</span>
                 </div>
                 <div class="category">
-                    <img src="images/new.png" alt="NEW" /><span>NEW</span>
+                    <img src="icons/new.png" alt="NEW" /><span>NEW</span>
                 </div>
                 <div class="category">
-                    <img src="images/cakes.png" alt="Торты" /><span>Торты</span>
+                    <img src="icons/cakes.png" alt="Торты" /><span>Торты</span>
                 </div>
                 <div class="category">
-                    <img src="images/cupcake.png" alt="Кексы" /><span>Кексы</span>
+                    <img src="icons/cupcake.png" alt="Кексы" /><span>Кексы</span>
                 </div>
                 <div class="category">
-                    <img src="images/pie.png" alt="Пироги" /><span>Пироги</span>
+                    <img src="icons/pie.png" alt="Пироги" /><span>Пироги</span>
                 </div>
                 <div class="category">
-                    <img src="images/macarons.png" alt="Пирожные" /><span>Пирожные</span>
+                    <img src="icons/macarons.png" alt="Пирожные" /><span>Пирожные</span>
                 </div>
                 <div class="category">
-                    <img src="images/bakery.png" alt="Выпечка" /><span>Выпечка</span>
+                    <img src="icons/bakery.png" alt="Выпечка" /><span>Выпечка</span>
                 </div>
                 <div class="category">
-                    <img src="images/jam.png" alt="Закрутки" /><span>Закрутки</span>
+                    <img src="icons/jam.png" alt="Закрутки" /><span>Закрутки</span>
                 </div>
             </div>
         </section>
@@ -132,29 +132,20 @@
 
     <nav class="bottom-nav">
         <div class="tab">
-            <img src="images/main_logo.svg" alt="Главная" />
+            <img src="icons/main_logo.svg" alt="Главная" />
             <small>Главная</small>
         </div>
         <div class="tab">
-            <img src="images/basket_logo.svg" alt="Корзина" />
+            <img src="icons/basket_logo.svg" alt="Корзина" />
             <small>Корзина</small>
         </div>
         <div class="tab">
-            <img src="images/order_logo.svg" alt="Заказы" />
+            <img src="icons/order_logo.svg" alt="Заказы" />
             <small>Заказы</small>
         </div>
     </nav>
 
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle("dark-mode");
-        }
-
-        function toggleLanguage() {
-            // Заглушка: переключение языка не реализовано
-            alert("Переключение языка пока не работает.");
-        }
-    </script>
+    <script src="scripts/main.js"></script>
 </body>
 
 </html>
