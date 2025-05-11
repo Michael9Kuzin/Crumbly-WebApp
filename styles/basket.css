@@ -1,0 +1,68 @@
+:root {
+  --font-family: "Lobster", cursive;
+  --bg-color: #ffeecc;
+  --text-color: #c69c6d;
+  --text-color-def: #ffffff;
+  --card-bg: #c69c6d;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: var(--card-bg);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: var(--text-color-def);
+    position: absolute;
+    left: 30px;
+    top: 23px;
+    cursor: pointer;
+}
+
+.title {
+    margin: 0 auto;
+    font-size: 40px;
+    color: var(--text-color-def);
+}
+
+.main-content {
+    flex: 1;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.basket-icon {
+    background-color: var(--card-bg);
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.basket-icon img {
+    width: 180px;
+}
+
+.empty-text {
+    font-size: 40px;
+}

@@ -1,5 +1,6 @@
 function toggleTheme() {
     document.body.classList.toggle("dark-mode");
+    // document.getElementById('overlayMenu').classList.remove('open');
 }
 
 function toggleLanguage() {
@@ -7,6 +8,17 @@ function toggleLanguage() {
     alert("Переключение языка пока не работает.");
 }
 
+function toggleMain() {
+    window.location.href = "index.html";
+}
+
+function toggleBasket() {
+    window.location.href = "content/basket.html";
+}
+
+function toggleOrders() {
+    window.location.href = "content/orders.html";
+}
 
 //const translations = {
 //    ru: {
