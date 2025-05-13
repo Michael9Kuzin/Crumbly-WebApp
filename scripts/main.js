@@ -22,7 +22,7 @@ const supportPopup = document.getElementById('supportPopup');
 document.querySelectorAll('#overlayMenu ul li a').forEach(link => {
   link.addEventListener('click', (e) => {
     const text = link.textContent.trim();
-    if (text === 'Темный — Светлый режим' || text === 'Языки') {
+    if (text === 'Темный — Светлый режим' || text === 'Языки' || text === 'Light — Dark Mode' || text === 'Languages') {
       return;
     }
     e.preventDefault(); // блокируем переход

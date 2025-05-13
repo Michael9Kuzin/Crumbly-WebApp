@@ -28,7 +28,10 @@ function applyTranslations(dict) {
 
     // Перевод названий категорий
     document.querySelectorAll('.categories .category span').forEach((el, idx) => {
-        el.textContent = dict[`${'category_' + (idx + 1)}`] || ''; // Подставить категории, если есть
+        const keys = [
+            "promo", "new", "cakes", "cupcakes", "pies", "macarons", "bakery", "jams"
+        ];
+        el.textContent = dict[keys[idx]]; // Подставить категории, если есть
     });
 
     // Перевод заголовка для магазинов
