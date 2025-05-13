@@ -21,5 +21,19 @@
     "pies": "Пироги",
     "macarons": "Пирожные",
     "bakery": "Выпечка",
-    "jams": "Закрутки"
+    "jams": "Закрутки",
+    "store_1": "Кондитер №1",
+    "store_2": "Кондитер №2",
+    "store_3": "Кондитер №3",
+    "store_4": "Кондитер №4",
+    "delivery_1": "20–30 мин",
+    "delivery_2": "15–20 мин",
+    "delivery_3": "50–60 мин",
+    "delivery_4": "20–35 мин",
+    "photo_placeholder": "ФОТО",
+    "title": "Crumbly",
+    "basket_title": "Корзина",
+    "orders_title": "Заказы",
+    "empty_basket": "Корзина пуста...",
+    "empty_orders": "Заказов нет..."
 }
