@@ -15,11 +15,11 @@
         <header class="top-bar">
             <div class="input-group">
                 <img src="icons/house_logo.svg" width="20" height="20" alt="Дом" />
-                <input type="text" placeholder="Адрес..." aria-label="Введите адрес доставки" />
+                <input type="text" placeholder="Адрес..." aria-label="Введите адрес доставки" data-i18n="address"/>
             </div>
             <div class="input-group">
                 <img src="icons/search_logo.svg" width="20" height="20" alt="Поиск" />
-                <input type="text" placeholder="Поиск..." aria-label="Поиск товаров" />
+                <input type="text" placeholder="Поиск..." aria-label="Поиск товаров" data-i18n="search"/>
             </div>
             <button class="burger-btn" aria-label="Меню"
                 onclick="document.getElementById('overlayMenu').classList.add('open')">
@@ -34,27 +34,27 @@
             <ul>
                 <li>
                     <img src="icons/support_logo.svg" alt="" />
-                    <a href="#">Поддержка</a>
+                    <a href="#" data-i18n="support">Поддержка</a>
                 </li>
                 <li onclick="toggleLanguage()">
                     <img src="icons/languages_logo.svg" alt="" />
-                    <a href="#">Языки</a>
+                    <a href="#" data-i18n="languages">Языки</a>
                 </li>
                 <li>
                     <img src="icons/privacy_policy_logo.svg" alt="" />
-                    <a href="#">Политика Конфиденциальности</a>
+                    <a href="#" data-i18n="privacy_policy">Политика Конфиденциальности</a>
                 </li>
                 <li>
                     <img src="icons/terms_of_use_logo.svg" alt="" />
-                    <a href="#">Пользовательское cоглашение</a>
+                    <a href="#" data-i18n="terms_of_use">Пользовательское cоглашение</a>
                 </li>
                 <li onclick="toggleTheme()">
                     <img src="icons/light_dark_mode_logo.svg" alt="" />
-                    <a href="#">Темный — Светлый режим</a>
+                    <a href="#" data-i18n="theme_toggle">Темный — Светлый режим</a>
                 </li>
                 <li>
                     <img src="icons/profile_logo.svg" alt="" />
-                    <a href="#">Личный кабинет</a>
+                    <a href="#" data-i18n="profile">Личный кабинет</a>
                 </li>
             </ul>
         </nav>
@@ -62,8 +62,8 @@
         <div id="overlay" class="overlay hidden"></div>
 
         <div id="supportPopup" class="support-popup">
-            <h2>Поддержка</h2>
-            <p class="popup-text">перейдите по ссылке</p>
+            <h2 class="popup-title" data-i18n="support_title">Поддержка</h2>
+            <p class="popup-text" data-i18n="support_text">перейдите по ссылке</p>
             <div class="popup-buttons">
                 <button onclick="handleSupportConfirm(true)">✔</button>
                 <button onclick="handleSupportConfirm(false)">✖</button>
@@ -72,45 +72,45 @@
 
 
         <section class="section">
-            <p class="section-title">Категории:</p>
+            <p class="section-title" data-i18n="categories">Категории:</p>
             <div class="categories">
                 <div class="category">
                     <img src="icons/persent_logo.svg" alt="Акции" />
-                    <span>Акции</span>
+                    <span data-i18n="promo">Акции</span>
                 </div>
                 <div class="category">
                     <img src="icons/new_logo.svg" alt="NEW" />
-                    <span>NEW</span>
+                    <span data-i18n="new">NEW</span>
                 </div>
                 <div class="category">
                     <img src="icons/cakes_logo.svg" alt="Торты" />
-                    <span>Торты</span>
+                    <span data-i18n="cakes">Торты</span>
                 </div>
                 <div class="category">
                     <img src="icons/cupcakes_logo.svg" alt="Кексы" />
-                    <span>Кексы</span>
+                    <span data-i18n="cupcakes">Кексы</span>
                 </div>
                 <div class="category">
                     <img src="icons/pies_logo.svg" alt="Пироги" />
-                    <span>Пироги</span>
+                    <span data-i18n="pies">Пироги</span>
                 </div>
                 <div class="category">
                     <img src="icons/macarons_logo.svg" alt="Пирожные" />
-                    <span>Пирожные</span>
+                    <span data-i18n="macarons">Пирожные</span>
                 </div>
                 <div class="category">
                     <img src="icons/bakery_logo.svg" alt="Выпечка" />
-                    <span>Выпечка</span>
+                    <span data-i18n="bakery">Выпечка</span>
                 </div>
                 <div class="category">
                     <img src="icons/jams_logo.svg" alt="Закрутки" />
-                    <span>Закрутки</span>
+                    <span data-i18n="jams">Закрутки</span>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <p class="section-title">Магазины кондитеров:</p>
+            <p class="section-title" data-i18n="stores">Магазины кондитеров:</p>
 
             <div class="store-card">
                 <div class="photo">ФОТО</div>
@@ -160,20 +160,21 @@
 
     <nav class="bottom-nav">
         <div class="tab" onclick="toggleMain()">
-            <img src="icons/main_logo.svg" alt="Главная" />
-            <small>Главная</small>
+            <img src="icons/yulduz_logo.svg" alt="Главная" />
+            <small data-i18n="main">Главная</small>
         </div>
         <div class="tab" onclick="toggleBasket()">
             <img src="icons/basket_logo.svg" alt="Корзина" />
-            <small>Корзина</small>
+            <small data-i18n="basket">Корзина</small>
         </div>
         <div class="tab" onclick="toggleOrders()">
             <img src="icons/order_logo.svg" alt="Заказы" />
-            <small>Заказы</small>
+            <small data-i18n="orders">Заказы</small>
         </div>
     </nav>
 
     <script src="scripts/main.js"></script>
+    <script src="scripts/localization.js"></script>
 </body>
 
 </html>
