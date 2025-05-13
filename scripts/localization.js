@@ -1,7 +1,7 @@
-let currentLang = localStorage.getItem("lang") || "ru";
+let currentLang = localStorage.getItem("lang") || "ru" || "en";
 
 async function loadLang(lang) {
-    const res = await fetch(`locales/${lang}.json`);
+    const res = await fetch(`../locales/${lang}.json`);
     const data = await res.json();
     applyTranslations(data);
 }
@@ -54,6 +54,24 @@ function toggleLanguage() {
 // Инициализация при загрузке
 document.addEventListener("DOMContentLoaded", () => {
     loadLang(currentLang);
+
+    const langToggle = document.querySelector('[data-lang-toggle]');
+    if (langToggle) {
+        langToggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            toggleLanguage();
+        });
+    }
+
+    // Добавляем обработчик на пункт меню "Языки"
+    document.querySelectorAll('.overlay-menu ul li a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const text = e.target.textContent.trim();
+            if (text === 'Языки' || text === 'Languages') {
+                toggleLanguage();
+            }
+        });
+    });
 });
 
 

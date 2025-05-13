@@ -1,6 +1,6 @@
 function toggleTheme() {
     document.body.classList.toggle("dark-mode");
-    // document.getElementById('overlayMenu').classList.remove('open');
+     document.getElementById('overlayMenu').classList.remove('open');
 }
 
 function toggleMain() {
