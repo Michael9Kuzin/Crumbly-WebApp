@@ -5,7 +5,7 @@ function toggleTheme() {
 
 function toggleLanguage() {
     // Заглушка: переключение языка не реализовано
-    alert("Переключение языка пока не работает.");
+    // alert("Переключение языка пока не работает.");
 }
 
 function toggleMain() {
@@ -19,6 +19,47 @@ function toggleBasket() {
 function toggleOrders() {
     window.location.href = "content/orders.html";
 }
+
+
+const overlay = document.getElementById('overlay');
+const supportPopup = document.getElementById('supportPopup');
+
+// Открытие popup по клику на ссылку
+document.querySelectorAll('#overlayMenu ul li a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    showSupportPopup(link.textContent.trim());
+    document.getElementById('overlayMenu').classList.remove('open');
+  });
+});
+
+// Показ popup + белого overlay
+function showSupportPopup(linkText) {
+  supportPopup.querySelector('.popup-text').textContent = `перейдите по ссылке: ${linkText}`;
+  supportPopup.style.display = 'block';
+  overlay.classList.add('show');
+}
+
+// Скрытие popup + overlay
+function hideSupportPopup() {
+  supportPopup.style.display = 'none';
+  overlay.classList.remove('show');
+}
+
+// Обработка кнопок ✔ ✖
+function handleSupportConfirm(confirmed) {
+  hideSupportPopup();
+  if (confirmed) {
+    alert('Вы подтвердили переход.');
+  } else {
+    console.log('Переход отменен.');
+  }
+}
+
+// Закрытие по клику на overlay (если нужно)
+overlay.addEventListener('click', hideSupportPopup);
+
+
 
 //const translations = {
 //    ru: {

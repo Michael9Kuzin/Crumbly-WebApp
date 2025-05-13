@@ -30,13 +30,13 @@ body {
     color: var(--text-color-def);
     position: absolute;
     left: 30px;
-    top: 23px;
+    top: 20px;
     cursor: pointer;
 }
 
 .title {
     margin: 0 auto;
-    font-size: 40px;
+    font-size: 35px;
     color: var(--text-color-def);
 }
 
@@ -63,5 +63,5 @@ body {
 }
 
 .empty-text {
-    font-size: 40px;
+    font-size: 35px;
 }
