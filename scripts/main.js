@@ -1,19 +1,39 @@
 function toggleTheme() {
-    document.body.classList.toggle("dark-mode");
-     document.getElementById('overlayMenu').classList.remove('open');
+  document.body.classList.toggle("dark-mode");
+  document.getElementById('overlayMenu').classList.remove('open');
 }
 
 function toggleMain() {
-    window.location.href = "index.html";
+  window.location.href = "index.html";
 }
 
 function toggleBasket() {
-    window.location.href = "content/basket.html";
+  window.location.href = "content/basket.html";
 }
 
 function toggleOrders() {
-    window.location.href = "content/orders.html";
+  window.location.href = "content/orders.html";
 }
+
+
+
+
+function getBaker1() {
+  window.location.href = "content/baker1.html";
+}
+
+function getBaker2() {
+  window.location.href = "content/baker2.html";
+}
+
+function getBaker3() {
+  window.location.href = "content/baker3.html";
+}
+
+function getBaker4() {
+  window.location.href = "content/baker4.html";
+}
+
 
 
 const overlay = document.getElementById('overlay');

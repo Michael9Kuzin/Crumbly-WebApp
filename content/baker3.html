@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="shortcut icon" href="../icons/yulduz_logo.svg" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+    <title>Crumbly</title>
+    <link rel="stylesheet" href="../styles/baker_profile.css">
+    <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
+</head>
+
+<body>
+    <header>
+        <img src="../images/lolli_pop.jpg" alt="Logo">
+    </header>
+
+    <div class="container">
+        <div class="title-rating">
+            Lolli Pop
+            <span>⭐ 4.91</span>
+        </div>
+
+        <div class="search">
+            <span><img src="../icons/search_logo.svg" alt=""></span>
+            <input type="text" placeholder="Поиск...">
+        </div>
+
+        <div class="products">
+            <div class="card">
+                <img src="../images/cookies.jpg" alt="Печенье">
+                <p>Печенье с шоколадной крошкой</p>
+                <div class="price">5 000 сум</div>
+            </div>
+            <div class="card">
+                <img src="../images/caks.jpg" alt="Торт">
+                <p>Классический торт Медовик</p>
+                <div class="price">15 000 сум</div>
+            </div>
+            <div class="card">
+                <img src="../images/cupcakes.jpg" alt="Маффины">
+                <p>Маффины с черникой</p>
+                <div class="price">8 000 сум</div>
+            </div>
+            <div class="card">
+                <img src="../images/apple_cakes.jpg" alt="Пирог">
+                <p>Пирог с яблоками и корицей</p>
+                <div class="price">5 000 сум</div>
+            </div>
+
+
+            <div class="card">
+                <img src="../images/tiramisu.jpg" alt="Печенье">
+                <p>Тирамису</p>
+                <div class="price">5 000 сум</div>
+            </div>
+            <div class="card">
+                <img src="../images/eclers.jpg" alt="Торт">
+                <p>Эклеры с ванильным кремом</p>
+                <div class="price">15 000 сум</div>
+            </div>
+            <div class="card">
+                <img src="../images/brauni.jpg" alt="Маффины">
+                <p>Шоколадный брауни</p>
+                <div class="price">8 000 сум</div>
+            </div>
+            <div class="card">
+                <img src="../images/cheescake.jpg" alt="Пирог">
+                <p>Чизкейк Нью-Йорк</p>
+                <div class="price">5 000 сум</div>
+            </div>
+        
+            
+            <div class="card">
+                <img src="../images/pompushki.jpg" alt="Печенье">
+                <p>Пончики с начинкой</p>
+                <div class="price">5 000 сум</div>
+            </div>
+            <div class="card">
+                <img src="../images/kurasan.jpg" alt="Торт">
+                <p>Слоёные круассаны</p>
+                <div class="price">15 000 сум</div>
+            </div>
+            <div class="card">
+                <img src="../images/tortiki.jpg" alt="Маффины">
+                <p>Тарталетки с кремом и ягодами</p>
+                <div class="price">8 000 сум</div>
+            </div>
+            <div class="card">
+                <img src="../images/hleb.jpg" alt="Пирог">
+                <p>Морковный торт</p>
+                <div class="price">5 000 сум</div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <div class="tab" onclick="toggleMain()">
+            <img src="../icons/yulduz_logo.svg" alt="Главная" />
+            <small data-i18n="main">Главная</small>
+        </div>
+        <div class="tab" onclick="toggleBasket()">
+            <img src="../icons/basket_logo.svg" alt="Корзина" />
+            <small data-i18n="basket">Корзина</small>
+        </div>
+        <div class="tab" onclick="toggleOrders()">
+            <img src="../icons/order_logo.svg" alt="Заказы" />
+            <small data-i18n="orders">Заказы</small>
+        </div>
+    </nav>
+
+    <script src="../scripts/baker.js"></script>
+</body>
+
+</html>
