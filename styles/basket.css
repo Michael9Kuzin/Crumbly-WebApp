@@ -1,9 +1,9 @@
 :root {
-  --font-family: "Lobster", cursive;
-  --bg-color: #ffeecc;
-  --text-color: #c69c6d;
-  --text-color-def: #ffffff;
-  --card-bg: #c69c6d;
+    --font-family: "Lobster", cursive;
+    --bg-color: #ffeecc;
+    --text-color: #c69c6d;
+    --text-color-def: #ffffff;
+    --card-bg: #c69c6d;
 }
 
 body {
