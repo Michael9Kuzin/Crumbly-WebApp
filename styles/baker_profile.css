@@ -90,6 +90,7 @@ header img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     text-align: center;
     padding: 5px;
     color: var(--white);
